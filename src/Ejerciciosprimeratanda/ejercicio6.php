@@ -1,3 +1,18 @@
+<?php
+//Esto es lo que el hizo
+function comprobarNumero(int $numero)
+{
+    if ($numero === 0) {
+        return "Es cero";
+    }
+    if ($numero < 0) {
+        return "Es menor que cero";
+    }
+    return "Es mayor que cero";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,7 +42,15 @@
 
 
     ?>
-
+    <!-- Esto tambien lo hizo el  -->
+    <!-- <div class = "respuesta">
+    <?php
+    // $numero = $_POST["num"];
+    // if (isset($numero) && is_numeric($numero)) {
+    //     echo comprobarNumero($numero);
+    // }
+    ?>
+</div> -->
 </body>
 
 </html>
