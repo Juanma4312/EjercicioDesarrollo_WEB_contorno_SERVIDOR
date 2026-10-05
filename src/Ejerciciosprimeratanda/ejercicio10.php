@@ -1,15 +1,31 @@
 <?php
-$nivel = $_POST['nivel'] ?? 0;
-$nivel ++;
-function generarNumeros(int $nivel): array{
+function generarNumeros(int $nivel): array
+{
     $numeros = [];
 
-    for ($i=0; $i < $nivel; $i++) { 
-        $numero [] = rand(1, 4);
+    for ($i = 0; $i < $nivel; $i++) {
+        $numero[] = rand(1, 4);
     }
 
     return $numeros;
 }
+
+$nivel = $_POST['nivel'] ?? 0;
+$nivel++;
+$num = $_POST['check_num'] ?? '';
+$inNum = $_POST['in_num'] ??  '';
+
+//compruebo si ha perdido o si sigue jugando
+
+if (!empty($num) && !empty($inNum)) {
+    //Falla los numeros?
+    if($num !== $inNum){
+        header("Location:ejercicio10_loose.php ?nivel=<$nivel");
+    }
+}
+
+$nivel++
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,8 +58,8 @@ function generarNumeros(int $nivel): array{
 
     <div id="numeros">
         <?php
-        $num = generarNumeros($nivel);
-        echo implode(",", $num );
+        $num = implode(",", generarNumeros($nivel));
+        echo  $num;
         ?>
     </div>
 
@@ -52,8 +68,9 @@ function generarNumeros(int $nivel): array{
         <form action="" method="post">
             <label for="in_nums">Introduzca los numeros en orden.</label>
             //no me muestra los numeros
-            <input type="text" name="in_numeros">
-            <input type="text" name="nivel" value=<?= $nivel ?>>
+            <input type="text" name="in_num">
+            <input type="hidden" name="nivel" value=<?= $nivel ?>>
+            <input type="hidden" name="check_num" value=<?= $num ?>>
             <button type="submit">Jugar</button>
         </form>
 
