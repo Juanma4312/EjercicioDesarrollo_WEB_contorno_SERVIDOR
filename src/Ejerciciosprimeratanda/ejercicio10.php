@@ -1,6 +1,15 @@
 <?php
-function generarNumeros(int $nivel): array
+/**
+ * @param $nivel si existe, genera un array de $nivel número aleatorios.
+ * @param $existentes si existe, los número ya generados para ser apliado con 1 número aleatorio más.
+ */
+function generarNumeros(int $nivel=0, array $existentes=[]): array
 {
+    if(count($existentes)>0){
+        $existentes[] = rand (1,4);
+        return $existentes;
+    }
+
     $numeros = [];
 
     for ($i = 0; $i < $nivel; $i++) {
@@ -9,6 +18,9 @@ function generarNumeros(int $nivel): array
 
     return $numeros;
 }
+
+
+
 
 $nivel = $_POST['nivel'] ?? 0;
 $nivel++;
@@ -58,7 +70,11 @@ $nivel++
 
     <div id="numeros">
         <?php
+        if(empty($inNum)){
+            
+        }
         $num = implode(",", generarNumeros($nivel));
+        $num = implode(",", generarNumeros(existentes:explode(",", $inNum)));
         echo  $num;
         ?>
     </div>
