@@ -7,7 +7,7 @@ private string $especialidad;
 	public function __construct(string $nombre, int $edad,Direccion $direccionPostal ,string $especialidad)
     {
         $this->especialidad = $especialidad;
-        return parent::__construct($nombre, $edad);
+        return parent::__construct($nombre, $edad, $direccionPostal);
     }
 
     public function getEspecialidad():string{
