@@ -21,8 +21,8 @@ class estudiante extends Persona
         parent::__construct($nombre, $edad);
     }
     
-    public function mostrarInformacion(string $grado):string {
-        $nombre = parent::getNombre();
-        return "$nombre, pertenerce al grado de: $grado";
+    public function mostrarInformacion():string {
+        $nombre = parent::__tooString();
+        return "$nombre, pertenerce al grado de: $this->grado";
     }
 }

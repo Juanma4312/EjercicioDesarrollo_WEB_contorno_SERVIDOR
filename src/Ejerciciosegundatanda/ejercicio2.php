@@ -47,6 +47,10 @@ class Persona{
     public function showDirecion(string $nombre, Direccion $direccionPostal){
         return $this->direccionPostal;
     }
+
+    public function __tooString(){
+        return $this->nombre . " " . $this->edad . ", " . $this-> direccionPostal;
+    }
 }
 
 
