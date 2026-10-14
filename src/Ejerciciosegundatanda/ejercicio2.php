@@ -45,7 +45,7 @@ class Persona{
     } 
 
     public function showDirecion(string $nombre, Direccion $direccionPostal){
-        return "La dirección de $nombre es $direccionPostal";
+        return $this->direccionPostal;
     }
 }
 

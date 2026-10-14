@@ -46,6 +46,12 @@ class Direccion
         $this->codPostal = $codPostal;
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->calle. ", ".$this->ciudad.
+         " (".$this->codPostal.")";
+    } 
 }
 
 
