@@ -51,6 +51,7 @@ class Persona{
     public function __tooString(){
         return $this->nombre . " " . $this->edad . ", " . $this-> direccionPostal;
     }
+    
 }
 
 
