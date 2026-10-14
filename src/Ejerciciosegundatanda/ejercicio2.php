@@ -39,7 +39,7 @@ class Persona{
         
     }
 
-    public function esMayorDeEdad(int $edad):bool{
+    public function esMayorDeEdad():bool{
         return $this -> edad >= 18;
 
     } 
