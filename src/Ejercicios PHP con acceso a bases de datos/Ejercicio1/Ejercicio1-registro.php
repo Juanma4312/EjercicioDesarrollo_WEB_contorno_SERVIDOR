@@ -2,7 +2,7 @@
 
 function getConexión(){
     //1º Establecer la conexión entre PHP y la BD
-    $dsn= "mysql:host=db;dbname=mi_base_de_datps";
+    $dsn= "mysql:host=db;dbname=mi_base_de_datos";
     try {
         $conexion = new PDO($dsn, "usuarioBD", "abc123");
     } catch (PDOException $e) {
@@ -25,8 +25,8 @@ function getConexión(){
  */
 
   function registro(String $nombre,String $apellido1,String $apellido2, String $nic, String $correo, String $contraseña){
-     $sql = " insert into registro( nombre, apellido1, apellido2, nic, correo, contraseña)
-     values ('$nombre','$apellido1','$apellido2','$nic','$correo','$contraseña')";
+     $sql = " INSERT INTO registro( nombre, apellido1, apellido2, nic, correo, contraseña)
+     VALUES ('$nombre','$apellido1','$apellido2','$nic','$correo','$contraseña')";
      $conexion=getConexión();
      echo "Consulta ejecutada";
      try {
@@ -38,6 +38,10 @@ function getConexión(){
 
      $conexion = null;
 
+  }
+
+  if($_SERVER['REQUEST_METHOD'] == "POST"){
+    registro($_POST['nombre'], $_POST['apellido1'], $_POST['apellido2'],$_POST['nic'], $_POST['correo'], $_POST['contraseña']);
   }
 
 
@@ -57,8 +61,8 @@ function getConexión(){
         <input type="text" name="nombre"><br>
         <label for="apellido1" type="text">Apellido1</label>
         <input type="text" name="apellido1"><br>
-        <label for="apellido1" type="text">Apellido2</label>
-        <input type="text" name="apellido1"><br>
+        <label for="apellido2" type="text">Apellido2</label>
+        <input type="text" name="apellido2"><br>
         <label for="nic" type="text">Nic</label>
         <input type="text" name="nic"><br>
         <label for="correo" type="text">Correo electrónico</label>
@@ -69,6 +73,10 @@ function getConexión(){
         <button type="submit">Registrarse</button>
 
     </form>
+
+    <a href="../Ejercicio1/Ejercicio1-login.php">
+            <button type="submit"> Para ir a Login</button>
+        </a>
     
 </body>
 </html>

@@ -1,0 +1,1 @@
+/*script que tiene que eliminar un videojuego de la lista y de la base de datos*/ */
