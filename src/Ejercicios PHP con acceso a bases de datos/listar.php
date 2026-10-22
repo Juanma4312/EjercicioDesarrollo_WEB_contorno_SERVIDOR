@@ -1,3 +1,32 @@
+<?php
+function getconexion(){
+    //1º Tenemso que establecer la conexicón entre php y la BD
+    $dsn = "mysql:host=db;dbname=mi_base_de_datos";
+    try {
+        $conexion =  new PDO($dsn, "usuarioBD", "abc123");
+    } catch (PDOException $e) {
+        echo "Error en la conexion con la BD";
+        die();
+    }
+    return $conexion;
+}
+
+function getDatos():array{
+
+$toret = [];
+$conexion=getconexion();
+
+
+$sql="SELECT * FROM videojuegos";
+$resultado = $conexion->query($sql);
+
+
+
+return $toret;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +37,17 @@
 <body>
     <h1>Videojuegos registrados</h1>
     <table>
+
+    <?php
+        //obtengo los datos actuales de la BD
+        $juegos = getDatos();
+        if (count($juegos)>0) {
+            foreach($juegos as $juego){
+                echo "<tr>.<th>$juego["nombre"].</th>\n
+                    <th>$juego["plataforma"].</th>"
+            }
+        }
+    ?>
         <tr>
             <th>Nombre</th>
             <th>Plataforma</th>
