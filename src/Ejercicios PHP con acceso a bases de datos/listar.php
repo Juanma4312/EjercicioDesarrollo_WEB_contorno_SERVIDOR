@@ -43,8 +43,12 @@ return $toret;
         $juegos = getDatos();
         if (count($juegos)>0) {
             foreach($juegos as $juego){
-                echo "<tr>.<th>$juego["nombre"].</th>\n
-                    <th>$juego["plataforma"].</th>"
+                echo "<tr>.<th>$juego["nombre"].</th><br>
+                    <th>$juego["plataforma"].</th><br>
+                    <th>$juego["año"].</th><br>
+                    <th>$juego["genero"].</th><br>
+                    <th>$juego["acciones"].</th><br>
+                    </tr>"
             }
         }
     ?>

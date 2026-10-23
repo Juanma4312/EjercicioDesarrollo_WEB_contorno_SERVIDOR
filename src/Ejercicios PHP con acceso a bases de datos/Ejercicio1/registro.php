@@ -74,9 +74,7 @@ function getConexión(){
 
     </form>
 
-    <a href="../Ejercicio1/Ejercicio1-login.php">
-            <button type="submit"> Para ir a Login</button>
-        </a>
+    <a href="../Ejercicio1/index.php"> Para ir a Login</a>
     
 </body>
 </html>

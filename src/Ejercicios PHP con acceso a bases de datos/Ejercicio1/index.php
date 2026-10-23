@@ -75,9 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <button type="submit">Login</button>
     </form>
 
-    <a href="./Ejecicio1/Ejercicio1-registro.php">
-        <button type="submit"> Para ir a registro</button>
-    </a>
+    <a href="registro.php">Registrarse</a>
 
     <?php 
     if (!empty($mensajeLogin)) {
