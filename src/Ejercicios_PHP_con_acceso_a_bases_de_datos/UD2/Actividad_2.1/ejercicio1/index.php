@@ -1,22 +1,30 @@
 <?php
+$estilo = "default";
+//Tiene cookie tema
+if (isset($_COOKIE['tema'])) {
 
-if (isset($_COOKIE['limpiar'])) {
-
-    $limpiar = $_COOKIE['limpiar'];
+    $estilo = $_COOKIE['tema'];
 }
-
-if (isset($_GET['limpiar'])) {
-    $limpiar = $_GET['limpiar'];
-
+//Entra por clear
+if(isset($_GET['clear']) && $_GET['clear']=='y'){
+    $estilo = "default";
+    //borrar la cookie
+   setcookie("tema", $estilo,1000);
+}
+//Entra por post(select)
+if (isset($_POST['estilo'])) {
+    $estilo = $_POST['estilo'];
+    //Creo/actualizo la cookie
     setcookie(
-        name: "limpiar",
-        value:$limpiar,
-        expires_or_options:time() - 3600,
-        path: "/Ejercicios_PHP_con_acceso_a_bases_de_datos/UD2/",
-        secure:true,
-        httponly:true
+        name: "tema",
+        value:$estilo,
+        expires_or_options:time()+604800,
+       
     );
 }
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -24,17 +32,18 @@ if (isset($_GET['limpiar'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="default.css">
+        <link rel="stylesheet" href="style/<?= $estilo ?>.css">
         <title>Ejercicio 3.3.1</title>
     </head>
     <body>
         <form action="" method="post">
             <label for="estilo">Estilo</label>
             <select name="estilo">
-                <option value="default" selected>Default</option>
-                <option value="oscuro" >Oscuro</option>
-                <option value="claro">Claro</option>
-                <option value="matrix">Matrix</option>
+                <!-- Esto es para que en el select apareca el estilo que se está aplicando -->
+                <option value="default" <?= $estilo=='default'?"selected":"" ?>>Default</option>
+                <option value="oscuro" <?= $estilo=='default'?"selected":"" ?>>Oscuro</option>
+                <option value="claro" <?= $estilo=='default'?"selected":"" ?>>Claro</option>
+                <option value="matrix" <?= $estilo=='default'?"selected":"" ?>>Matrix</option>
             </select>
             <a href="?clear=y">Limpiar</a>
             <button type="submit">Guardar</button>
