@@ -5,6 +5,7 @@ session_start();
 //Esta logueado???
 if(!$_SESSION['logeado'] == true){
     header("Location: login.php");
+    exit;
 }
 //No te redirijo a login
 
@@ -19,7 +20,7 @@ if(!$_SESSION['logeado'] == true){
 </head>
 <body>
     <h1>Sección restringida</h1>
-    Estás logueado con el usuario <?= $_SESSION['nic'] ?>. Pulsa aquí para salir: <a href="">Logout</a>
+    Estás logueado con el usuario <?= $_SESSION['nic'] ?>. Pulsa aquí para salir: <a href="logout.php">Logout</a>
     <p>
         Esta sección esta restringida solo para los usuarios que están registrados.
     </p>
