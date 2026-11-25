@@ -2,16 +2,16 @@
 require_once("funciones.php");
 session_start();
 $_SESSION['logeado'] = false;
-
+//AL principio de todo comproabr si me entra por post la cookie o por get 
 //Con esto compruebo si está logeado ya, y si esta cambio la variable de session a true
 if (isset($_POST['nic']) && isset($_POST['pass'])  ) {
     $nic = $_POST['nic'];
-    if(comprobar_usuario($_POST['nic'],$_POST['pass'])){
+    if(comprobar_usuario($nic,$_POST['pass'])){
         $_SESSION['logeado'] = true;
-        $_SESSION['nic'] = $_POST['nic'];
+        $_SESSION['nic'] = $nic;
 
         if ($_POST['recuerdame']) {
-            setcookie("remember_nic",$_POST['nic'], time()+2592000);
+            setcookie("remember_nic",$nic, time()+2592000);
         }   
     }
 }
