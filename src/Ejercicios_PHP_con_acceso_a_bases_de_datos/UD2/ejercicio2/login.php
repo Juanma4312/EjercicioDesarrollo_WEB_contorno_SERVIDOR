@@ -2,8 +2,18 @@
 require_once("funciones.php");
 session_start();
 $_SESSION['logeado'] = false;
+
+
+/**Chuleta 
+ session_name()
+ session_id();
+ * 
+*/
+setcookie("","",0,'','',false,true)
 //AL principio de todo comproabr si me entra por post la cookie o por get 
 //Con esto compruebo si está logeado ya, y si esta cambio la variable de session a true
+$nic = $_COOKIE['remember_nic']??'';
+
 if (isset($_POST['nic']) && isset($_POST['pass'])  ) {
     $nic = $_POST['nic'];
     if(comprobar_usuario($nic,$_POST['pass'])){
@@ -36,11 +46,11 @@ if ($_SESSION['logeado'] == true) {
     <fieldset>
         <form action="" method="post">
             <label for="nic">Nombre de usuario (nic)</label><br>
-            <input type="text" name="nic" value=""><br>
+            <input type="text" name="nic" value=" <?= $nic ?>"><br>
             <label for="pass">Contraseña</label><br>
             <input type="password" name="pass"><br>
             <label for="recuerdame">Recuerdame</label>
-            <input type="checkbox" name="recuerdame" id=""><br>
+            <input type="checkbox" name="recuerdame" <?=  isset($_COOKIE['remember_nic'])?'checked':''?>>><br>
             <button type="submit">Acceder</button>
         </form>
     </fieldset>
